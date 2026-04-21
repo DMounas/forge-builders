@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FORGE BUILDERS — Premium construction company building luxury villas and lasting legacies. Track your project in real-time.">
+  <title>FORGE BUILDERS — We Build Legacies</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏗️</text></svg>">
+</head>
+<body>
+
+  <!-- Particle Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span class="toast-icon">✅</span>
+    <span class="toast-text">Notification sent</span>
+  </div>
+
+  <!-- ============================================
+       PAGE 1 — HOMEPAGE
+       ============================================ -->
+  <div class="page active" id="page-home">
+
+    <!-- Navigation -->
+    <nav class="main-nav" id="main-nav">
+      <div class="nav-logo" onclick="navigateTo('home')">
+        <div class="nav-logo-icon">F</div>
+        <span class="nav-logo-text">FORGE BUILDERS</span>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#" onclick="navigateTo('home'); closeMenu();">Home</a></li>
+        <li><a href="#projects-section" onclick="closeMenu();">Projects</a></li>
+        <li><a href="#services-section" onclick="closeMenu();">Services</a></li>
+        <li><a href="#" onclick="navigateTo('login'); closeMenu();">Client Portal</a></li>
+        <li><a href="#" class="nav-cta" onclick="navigateTo('login'); closeMenu();">Track Your Project</a></li>
+      </ul>
+      <div class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <div class="hero-bg-animation"></div>
+        <div class="hero-lines">
+          <div class="hero-line"></div>
+          <div class="hero-line"></div>
+          <div class="hero-line"></div>
+          <div class="hero-line"></div>
+          <div class="hero-line"></div>
+        </div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Luxury Construction Since 2008
+        </div>
+        <h1 class="hero-title">
+          We Don't Just<br>Build Houses.<br><span class="gold">We Build Legacies.</span>
+        </h1>
+        <p class="hero-subtitle">
+          From blueprint to breathtaking — we craft villas that stand as monuments to your vision. Every brick, every beam, every finish — meticulously perfected.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn btn-gold" onclick="navigateTo('login')">
+            <span>🏗️</span> Track Your Project
+          </button>
+          <button class="btn btn-outline" onclick="scrollToSection('services-section')">
+            <span>📋</span> Get A Quote
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card animate-on-scroll stagger-1">
+          <div class="stat-number"><span class="counter" data-target="47">0</span></div>
+          <div class="stat-label">Villas Built</div>
+        </div>
+        <div class="stat-card animate-on-scroll stagger-2">
+          <div class="stat-number"><span class="counter" data-target="12">0</span></div>
+          <div class="stat-label">Active Projects</div>
+        </div>
+        <div class="stat-card animate-on-scroll stagger-3">
+          <div class="stat-number"><span class="counter" data-target="99">0</span><span class="stat-suffix">%</span></div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects-section">
+      <div class="section-header" style="padding: 0 60px;">
+        <div class="section-eyebrow animate-on-scroll">Our Portfolio</div>
+        <h2 class="section-title animate-on-scroll">Completed <span class="gold">Masterworks</span></h2>
+        <p class="section-subtitle animate-on-scroll">Every project tells a story of craftsmanship, dedication, and architectural brilliance.</p>
+      </div>
+      <div class="projects-scroll-container" id="projects-scroll">
+        <div class="projects-track">
+
+          <div class="project-card animate-on-scroll stagger-1">
+            <div class="project-card-image">
+              <div class="img-placeholder">🏛️</div>
+              <div class="project-card-overlay">
+                <span class="project-card-tag">Villa</span>
+              </div>
+            </div>
+            <div class="project-card-body">
+              <div class="project-card-title">Villa Maharaja</div>
+              <div class="project-card-location">📍 Jaipur, Rajasthan</div>
+            </div>
+          </div>
+
+          <div class="project-card animate-on-scroll stagger-2">
+            <div class="project-card-image">
+              <div class="img-placeholder">🏠</div>
+              <div class="project-card-overlay">
+                <span class="project-card-tag">Luxury Home</span>
+              </div>
+            </div>
+            <div class="project-card-body">
+              <div class="project-card-title">The Golden Residence</div>
+              <div class="project-card-location">📍 Mumbai, Maharashtra</div>
+            </div>
+          </div>
+
+          <div class="project-card animate-on-scroll stagger-3">
+            <div class="project-card-image">
+              <div class="img-placeholder">🏗️</div>
+              <div class="project-card-overlay">
+                <span class="project-card-tag">Commercial</span>
+              </div>
+            </div>
+            <div class="project-card-body">
+              <div class="project-card-title">Forge Tower</div>
+              <div class="project-card-location">📍 Bangalore, Karnataka</div>
+            </div>
+          </div>
+
+          <div class="project-card animate-on-scroll stagger-4">
+            <div class="project-card-image">
+              <div class="img-placeholder">🏡</div>
+              <div class="project-card-overlay">
+                <span class="project-card-tag">Renovation</span>
+              </div>
+            </div>
+            <div class="project-card-body">
+              <div class="project-card-title">Heritage Haveli Restore</div>
+              <div class="project-card-location">📍 Udaipur, Rajasthan</div>
+            </div>
+          </div>
+
+          <div class="project-card animate-on-scroll stagger-5">
+            <div class="project-card-image">
+              <div class="img-placeholder">🏢</div>
+              <div class="project-card-overlay">
+                <span class="project-card-tag">Mixed Use</span>
+              </div>
+            </div>
+            <div class="project-card-body">
+              <div class="project-card-title">Crown Heights Complex</div>
+              <div class="project-card-location">📍 Delhi NCR</div>
+            </div>
+          </div>
+
+          <div class="project-card animate-on-scroll stagger-6">
+            <div class="project-card-image">
+              <div class="img-placeholder">🏰</div>
+              <div class="project-card-overlay">
+                <span class="project-card-tag">Villa</span>
+              </div>
+            </div>
+            <div class="project-card-body">
+              <div class="project-card-title">Sharma Family Estate</div>
+              <div class="project-card-location">📍 Goa</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services-section">
+      <div class="section-header">
+        <div class="section-eyebrow animate-on-scroll">What We Do</div>
+        <h2 class="section-title animate-on-scroll">Built With <span class="gold">Precision</span></h2>
+        <p class="section-subtitle animate-on-scroll">End-to-end construction solutions, each delivered with uncompromising quality and transparency.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card animate-on-scroll stagger-1">
+          <div class="service-icon">🏛️</div>
+          <div class="service-title">Villa Construction</div>
+          <p class="service-desc">Bespoke luxury villas built from the ground up with premium materials and master craftsmanship.</p>
+        </div>
+        <div class="service-card animate-on-scroll stagger-2">
+          <div class="service-icon">🎨</div>
+          <div class="service-title">Interior Design</div>
+          <p class="service-desc">Curated interior spaces that blend aesthetics with functionality — every room a masterpiece.</p>
+        </div>
+        <div class="service-card animate-on-scroll stagger-3">
+          <div class="service-icon">📐</div>
+          <div class="service-title">Structural Engineering</div>
+          <p class="service-desc">Rock-solid foundations and structures engineered for generations, using cutting-edge analysis.</p>
+        </div>
+        <div class="service-card animate-on-scroll stagger-4">
+          <div class="service-icon">🔨</div>
+          <div class="service-title">Renovation</div>
+          <p class="service-desc">Transforming existing spaces into modern marvels while preserving character and heritage.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="padding: 100px 60px; text-align: center;">
+      <div class="section-header">
+        <div class="section-eyebrow animate-on-scroll">Start Your Journey</div>
+        <h2 class="section-title animate-on-scroll">Ready To Build Your <span class="gold">Legacy?</span></h2>
+        <p class="section-subtitle animate-on-scroll">Join the families who chose FORGE BUILDERS to turn their dream into reality.</p>
+      </div>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;" class="animate-on-scroll">
+        <button class="btn btn-gold" onclick="navigateTo('login')">
+          <span>🚀</span> Track Your Project
+        </button>
+        <button class="btn btn-outline">
+          <span>📞</span> Schedule Consultation
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo" style="margin-bottom: 4px;">
+            <div class="nav-logo-icon">F</div>
+            <span class="nav-logo-text">FORGE BUILDERS</span>
+          </div>
+          <p>Luxury construction company specializing in bespoke villas, premium renovations, and architectural excellence. Building legacies since 2008.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Services</div>
+          <ul>
+            <li><a href="#">Villa Construction</a></li>
+            <li><a href="#">Interior Design</a></li>
+            <li><a href="#">Structural Engineering</a></li>
+            <li><a href="#">Renovation</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Contact</div>
+          <ul>
+            <li><a href="#">info@forgebuilders.com</a></li>
+            <li><a href="#">+91 98765 43210</a></li>
+            <li><a href="#">Mumbai, India</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2024 FORGE BUILDERS Pvt. Ltd. All rights reserved. Crafted with precision.
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ============================================
+       PAGE 2 — CLIENT LOGIN
+       ============================================ -->
+  <div class="page" id="page-login">
+    <nav class="main-nav scrolled">
+      <div class="nav-logo" onclick="navigateTo('home')">
+        <div class="nav-logo-icon">F</div>
+        <span class="nav-logo-text">FORGE BUILDERS</span>
+      </div>
+      <ul class="nav-links" id="nav-links-login">
+        <li><a href="#" onclick="navigateTo('home');">← Back to Home</a></li>
+      </ul>
+    </nav>
+
+    <div class="login-page">
+      <div class="login-bg"></div>
+      <div class="login-card">
+        <div class="login-logo">
+          <div class="login-logo-icon">F</div>
+          <div class="login-title">CLIENT PORTAL</div>
+          <div class="login-subtitle">Access your project dashboard</div>
+        </div>
+        <form class="login-form" id="login-form" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label class="form-label" for="project-id">Project ID</label>
+            <input class="form-input" type="text" id="project-id" placeholder="e.g. FRG-2024" required autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-input" type="password" id="password" placeholder="Enter your password" required>
+          </div>
+          <button type="submit" class="btn btn-gold login-btn">
+            ✦ Enter Portal
+          </button>
+        </form>
+        <p class="login-tagline">"Your dream home is being built.<br>Watch it come to life."</p>
+        <div class="login-back">
+          <a href="#" onclick="navigateTo('home')">← Return to Homepage</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       PAGE 3 — CLIENT DASHBOARD
+       ============================================ -->
+  <div class="page" id="page-dashboard">
+
+    <header class="dash-header">
+      <div class="dash-header-left">
+        <div class="dash-header-logo" onclick="navigateTo('home')">FORGE BUILDERS</div>
+        <div class="live-badge">
+          <span class="live-dot"></span>
+          Live Updates
+        </div>
+      </div>
+      <div class="dash-header-right">
+        <div class="notification-bell" id="notification-bell" onclick="toggleNotifications()">
+          🔔
+          <span class="notification-count" id="notification-count">3</span>
+          <div class="notification-dropdown" id="notification-dropdown">
+            <div class="notification-dropdown-header">Recent Notifications</div>
+            <div class="notification-item">
+              <div class="notification-item-text">✅ Plumbing on 2nd floor completed</div>
+              <div class="notification-item-time">2 hours ago</div>
+            </div>
+            <div class="notification-item">
+              <div class="notification-item-text">📸 New site photos uploaded — Framing</div>
+              <div class="notification-item-time">Yesterday</div>
+            </div>
+            <div class="notification-item">
+              <div class="notification-item-text">📋 Materials log updated — Cement delivery</div>
+              <div class="notification-item-time">2 days ago</div>
+            </div>
+          </div>
+        </div>
+        <div class="dash-user" onclick="handleLogout()">
+          <div class="dash-avatar">RS</div>
+          <span class="dash-user-name">Mr. Sharma</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="dash-main">
+
+      <!-- Welcome -->
+      <div class="dash-welcome animate-on-scroll">
+        <h1>Welcome back, <span class="gold">Mr. Sharma</span></h1>
+        <p>Villa Project <strong>#FRG-2024</strong> — Tracking your dream, brick by brick.</p>
+      </div>
+
+      <!-- Progress Ring -->
+      <div class="progress-ring-container animate-on-scroll">
+        <div class="progress-ring-wrapper">
+          <svg class="progress-ring-svg" viewBox="0 0 200 200">
+            <defs>
+              <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#A67C00"/>
+                <stop offset="100%" stop-color="#E8C547"/>
+              </linearGradient>
+            </defs>
+            <circle class="progress-ring-bg" cx="100" cy="100" r="90"/>
+            <circle class="progress-ring-fill" id="progress-ring-fill" cx="100" cy="100" r="90"/>
+          </svg>
+          <div class="progress-ring-text">
+            <div class="progress-ring-value" id="progress-ring-value">0%</div>
+            <div class="progress-ring-label">Complete</div>
+          </div>
+        </div>
+        <div class="progress-ring-info">
+          <h3>Overall Project Progress</h3>
+          <p>Your villa is progressing excellently. Plumbing and electrical work is underway on all floors. We expect to begin painting by end of May.</p>
+          <div class="estimated">
+            📅 Estimated Completion: August 2025
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase Cards -->
+      <div class="dash-section-title">
+        Phase Breakdown <span class="gold-line"></span>
+      </div>
+      <div class="phases-grid" id="phases-grid">
+        <!-- Dynamically populated -->
+      </div>
+
+      <!-- Recent Updates -->
+      <div class="dash-section-title">
+        Recent Updates <span class="gold-line"></span>
+      </div>
+      <div class="timeline" id="timeline">
+        <!-- Dynamically populated -->
+      </div>
+
+      <!-- Photo Gallery -->
+      <div class="dash-section-title">
+        Site Photo Gallery <span class="gold-line"></span>
+      </div>
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Dynamically populated -->
+      </div>
+
+      <!-- Materials Table -->
+      <div class="dash-section-title">
+        Materials Transparency Log <span class="gold-line"></span>
+      </div>
+      <div class="materials-table-wrapper">
+        <table class="materials-table" id="materials-table">
+          <thead>
+            <tr>
+              <th>Material</th>
+              <th>Quantity Used</th>
+              <th>Unit Cost</th>
+              <th>Total Cost</th>
+            </tr>
+          </thead>
+          <tbody id="materials-tbody">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Dashboard Footer -->
+      <div style="text-align: center; padding: 40px 0 20px; border-top: 1px solid var(--glass-border); margin-top: 20px;">
+        <p style="font-size: 13px; color: var(--text-muted);">FORGE BUILDERS Client Portal v2.0 — All data updated in real-time</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================
+       PAGE 4 — ADMIN PANEL
+       ============================================ -->
+  <div class="page" id="page-admin">
+
+    <!-- Mobile Toggle -->
+    <button class="admin-mobile-toggle" id="admin-mobile-toggle" onclick="toggleAdminSidebar()">☰</button>
+
+    <!-- Admin Overlay -->
+    <div class="admin-overlay" id="admin-overlay" onclick="toggleAdminSidebar()"></div>
+
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="admin-sidebar-logo">
+        <h2>FORGE BUILDERS</h2>
+        <p>Builder Admin Panel</p>
+      </div>
+      <ul class="admin-nav">
+        <li><a href="#" class="active" id="admin-nav-projects" onclick="switchAdminTab('projects')"><span class="admin-nav-icon">📋</span> All Projects</a></li>
+        <li><a href="#" id="admin-nav-editor" onclick="switchAdminTab('editor')"><span class="admin-nav-icon">✏️</span> Project Editor</a></li>
+        <li><a href="#" id="admin-nav-photos" onclick="switchAdminTab('photos')"><span class="admin-nav-icon">📸</span> Photo Upload</a></li>
+        <li><a href="#" id="admin-nav-materials" onclick="switchAdminTab('materials')"><span class="admin-nav-icon">📦</span> Materials Log</a></li>
+      </ul>
+      <div style="padding: 16px 24px; margin-top: auto; border-top: 1px solid var(--glass-border);">
+        <a href="#" onclick="navigateTo('home')" style="font-size: 13px; color: var(--text-secondary); display: flex; align-items: center; gap: 8px;">
+          <span>←</span> Back to Website
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="admin-content">
+
+      <!-- Top Bar -->
+      <div class="admin-top-bar">
+        <h1>All Projects</h1>
+        <button class="btn btn-outline" onclick="navigateTo('dashboard')">👁️ Preview Client View</button>
+      </div>
+
+      <!-- Projects List -->
+      <div class="project-list" id="admin-projects-list">
+        <div class="project-list-item active-project" onclick="selectProject(0)">
+          <div class="project-list-info">
+            <div class="project-list-icon">🏛️</div>
+            <div>
+              <div class="project-list-name">Sharma Family Villa</div>
+              <div class="project-list-id">FRG-2024</div>
+            </div>
+          </div>
+          <span class="status-chip on-track">On Track</span>
+        </div>
+        <div class="project-list-item" onclick="selectProject(1)">
+          <div class="project-list-info">
+            <div class="project-list-icon">🏗️</div>
+            <div>
+              <div class="project-list-name">Patel Commercial Complex</div>
+              <div class="project-list-id">FRG-2025</div>
+            </div>
+          </div>
+          <span class="status-chip delayed">Delayed</span>
+        </div>
+        <div class="project-list-item" onclick="selectProject(2)">
+          <div class="project-list-info">
+            <div class="project-list-icon">🏠</div>
+            <div>
+              <div class="project-list-name">Mehta Luxury Home</div>
+              <div class="project-list-id">FRG-2023</div>
+            </div>
+          </div>
+          <span class="status-chip completed-chip">Completed</span>
+        </div>
+        <div class="project-list-item" onclick="selectProject(3)">
+          <div class="project-list-info">
+            <div class="project-list-icon">🏡</div>
+            <div>
+              <div class="project-list-name">Kumar Heritage Renovation</div>
+              <div class="project-list-id">FRG-2026</div>
+            </div>
+          </div>
+          <span class="status-chip on-track">On Track</span>
+        </div>
+      </div>
+
+      <!-- Editor Panel -->
+      <div class="editor-panel" id="editor-panel">
+
+        <!-- Phase Sliders -->
+        <div class="editor-section" id="admin-tab-editor">
+          <div class="editor-section-title"><span class="icon">📊</span> Update Phase Completion</div>
+          <div class="phase-slider-group" id="phase-sliders">
+            <!-- Dynamically generated -->
+          </div>
+        </div>
+
+        <!-- Updates -->
+        <div class="editor-section" id="admin-tab-updates">
+          <div class="editor-section-title"><span class="icon">📝</span> Project Updates</div>
+          <div class="update-entries" id="update-entries">
+            <!-- Dynamically generated -->
+          </div>
+          <div class="admin-row">
+            <input class="admin-input" type="date" id="new-update-date" value="2025-04-18">
+            <input class="admin-input" type="text" id="new-update-text" placeholder="Enter update description...">
+            <button class="btn btn-outline" style="white-space: nowrap;" onclick="addUpdate()">+ Add</button>
+          </div>
+        </div>
+
+        <!-- Photos Upload -->
+        <div class="editor-section" id="admin-tab-photos">
+          <div class="editor-section-title"><span class="icon">📸</span> Upload Site Photos</div>
+          <div style="margin-bottom: 16px;">
+            <label class="form-label">Select Phase</label>
+            <select class="admin-input" id="photo-phase-select" style="padding: 12px 16px; background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); color: var(--text-primary);">
+              <option value="foundation">Foundation</option>
+              <option value="framing">Framing</option>
+              <option value="plumbing" selected>Plumbing</option>
+              <option value="electrical">Electrical</option>
+              <option value="painting">Painting</option>
+              <option value="finishing">Finishing</option>
+            </select>
+          </div>
+          <div class="upload-area" onclick="simulateUpload()">
+            <div class="upload-icon">📁</div>
+            <p class="upload-text">Click to upload photos or <span>browse files</span></p>
+            <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">Supports JPG, PNG up to 10MB</p>
+          </div>
+        </div>
+
+        <!-- Materials -->
+        <div class="editor-section" id="admin-tab-materials">
+          <div class="editor-section-title"><span class="icon">📦</span> Materials Log</div>
+          <div class="materials-admin" id="materials-admin">
+            <!-- Dynamically generated -->
+          </div>
+          <button class="btn-add-row" onclick="addMaterialRow()">+ Add Material Row</button>
+        </div>
+
+        <!-- Push Update Button -->
+        <button class="btn btn-gold push-update-btn" onclick="pushLiveUpdate()">
+          ⚡ Push Live Update to Client
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
