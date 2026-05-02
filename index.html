@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="FORGE BUILDERS — Premium construction company building luxury villas and lasting legacies. Track your project in real-time.">
-  <title>FORGE BUILDERS — We Build Legacies</title>
+  <meta name="description" content="RJS HOMES — Premium construction company building luxury villas and lasting legacies. Track your project in real-time.">
+  <title>RJS HOMES - Building Dreams Since 2002</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/rjs-styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏗️</text></svg>">
 </head>
 <body>
@@ -20,22 +21,22 @@
   </div>
 
   <!-- ============================================
-       PAGE 1 — HOMEPAGE
+       PAGE 1 - HOMEPAGE
        ============================================ -->
   <div class="page active" id="page-home">
 
     <!-- Navigation -->
     <nav class="main-nav" id="main-nav">
       <div class="nav-logo" onclick="navigateTo('home')">
-        <div class="nav-logo-icon">F</div>
-        <span class="nav-logo-text">FORGE BUILDERS</span>
+        <div class="nav-logo-icon">RJS</div>
+        <span class="nav-logo-text">RJS HOMES</span>
       </div>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#" onclick="navigateTo('home'); closeMenu();">Home</a></li>
-        <li><a href="#projects-section" onclick="closeMenu();">Projects</a></li>
-        <li><a href="#services-section" onclick="closeMenu();">Services</a></li>
-        <li><a href="#" onclick="navigateTo('login'); closeMenu();">Client Portal</a></li>
-        <li><a href="#" class="nav-cta" onclick="navigateTo('login'); closeMenu();">Track Your Project</a></li>
+        <li><a href="#" onclick="navigateTo('home'); closeMenu();">HOME</a></li>
+        <li><a href="#about-section" onclick="closeMenu();">ABOUT</a></li>
+        <li><a href="#projects-section" onclick="closeMenu();">PROJECTS</a></li>
+        <li><a href="#contact-section" onclick="closeMenu();">CONTACT</a></li>
+        <li><a href="#" class="nav-cta" onclick="navigateTo('login'); closeMenu();">PORTAL &rarr;</a></li>
       </ul>
       <div class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()">
         <span></span>
@@ -45,239 +46,261 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="hero">
+    <section class="hero rjs-hero" id="hero">
       <div class="hero-bg">
         <div class="hero-bg-animation"></div>
-        <div class="hero-lines">
-          <div class="hero-line"></div>
-          <div class="hero-line"></div>
-          <div class="hero-line"></div>
-          <div class="hero-line"></div>
-          <div class="hero-line"></div>
-        </div>
       </div>
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="hero-badge-dot"></span>
-          Luxury Construction Since 2008
+      <div class="hero-content rjs-hero-content">
+        <div class="hero-left">
+          <div class="section-eyebrow animate-on-scroll">HYDERABAD'S PREMIUM REAL ESTATE</div>
+          <h1 class="hero-title rjs-title animate-on-scroll stagger-1">
+            Building Dreams<br><span class="gold">Since 2002</span>
+          </h1>
+          <p class="hero-subtitle rjs-subtitle animate-on-scroll stagger-2">
+            From our father's legacy of craftsmanship to a fully transparent, technology-driven real estate experience - RJS Homes is your trusted partner for premium homes in Hyderabad.
+          </p>
+          <div class="hero-buttons animate-on-scroll stagger-3">
+            <button class="btn btn-gold rjs-btn" onclick="scrollToSection('projects-section')">
+              VIEW OUR PROJECTS
+            </button>
+            <button class="btn btn-outline rjs-btn" onclick="scrollToSection('about-section')">
+              OUR STORY
+            </button>
+          </div>
         </div>
-        <h1 class="hero-title">
-          We Don't Just<br>Build Houses.<br><span class="gold">We Build Legacies.</span>
-        </h1>
-        <p class="hero-subtitle">
-          From blueprint to breathtaking — we craft villas that stand as monuments to your vision. Every brick, every beam, every finish — meticulously perfected.
-        </p>
-        <div class="hero-buttons">
-          <button class="btn btn-gold" onclick="navigateTo('login')">
-            <span>🏗️</span> Track Your Project
-          </button>
-          <button class="btn btn-outline" onclick="scrollToSection('services-section')">
-            <span>📋</span> Get A Quote
-          </button>
+        <div class="hero-right animate-on-scroll stagger-4">
+          <div class="vertical-stats">
+            <div class="v-stat">
+              <div class="v-stat-num"><span class="counter" data-target="20">0</span>+</div>
+              <div class="v-stat-label">YEARS</div>
+            </div>
+            <div class="v-stat-divider"></div>
+            <div class="v-stat">
+              <div class="v-stat-num"><span class="counter" data-target="500">0</span>+</div>
+              <div class="v-stat-label">FAMILIES</div>
+            </div>
+            <div class="v-stat-divider"></div>
+            <div class="v-stat">
+              <div class="v-stat-num"><span class="counter" data-target="50">0</span>+</div>
+              <div class="v-stat-label">PROJECTS</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section" id="stats-section">
-      <div class="stats-grid">
-        <div class="stat-card animate-on-scroll stagger-1">
-          <div class="stat-number"><span class="counter" data-target="47">0</span></div>
-          <div class="stat-label">Villas Built</div>
+    <!-- About Section -->
+    <section class="about-section" id="about-section">
+      <div class="horizontal-stats animate-on-scroll" id="stats-section">
+        <div class="h-stat">
+          <div class="h-stat-num"><span class="counter" data-target="20">0</span>+</div>
+          <div class="h-stat-label">YEARS OF EXPERIENCE</div>
         </div>
-        <div class="stat-card animate-on-scroll stagger-2">
-          <div class="stat-number"><span class="counter" data-target="12">0</span></div>
-          <div class="stat-label">Active Projects</div>
+        <div class="h-stat">
+          <div class="h-stat-num"><span class="counter" data-target="500">0</span>+</div>
+          <div class="h-stat-label">HAPPY FAMILIES</div>
         </div>
-        <div class="stat-card animate-on-scroll stagger-3">
-          <div class="stat-number"><span class="counter" data-target="99">0</span><span class="stat-suffix">%</span></div>
-          <div class="stat-label">Client Satisfaction</div>
+        <div class="h-stat">
+          <div class="h-stat-num"><span class="counter" data-target="50">0</span>+</div>
+          <div class="h-stat-label">PROJECTS DELIVERED</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-num"><span class="counter" data-target="100">0</span>%</div>
+          <div class="h-stat-label">TRANSPARENT PROCESS</div>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <div class="about-left animate-on-scroll">
+          <div class="about-image-container">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop" alt="Raman Jee Sharma" class="about-img">
+            <div class="about-img-caption">
+              <h3>Raman Jee Sharma</h3>
+              <p>Founder & Director, RJS Homes</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-right animate-on-scroll stagger-2">
+          <div class="section-eyebrow">OUR STORY</div>
+          <h2 class="section-title rjs-title">From My Father's Workshop<br>to Your Dream Home</h2>
+          
+          <blockquote class="rjs-quote">
+            "I watched my father build something extraordinary - not just buildings, but trust. I wanted to carry that forward, and make it transparent."
+          </blockquote>
+          
+          <div class="rjs-text">
+            <p>Growing up in Hyderabad, I had a front-row seat to my father's furniture contracting business - a venture he poured his life into since <strong>2002</strong>. He worked tirelessly across the city, delivering quality craftsmanship job after job. But I noticed something that quietly troubled me: clients rarely had full visibility into what was happening with their investment. Timelines shifted, costs weren't always explained, and trust was fragile.</p>
+            
+            <p>That gap - between what was promised and what clients could verify - became the mission I built RJS Homes around. When I stepped into the business, I brought a new philosophy: <strong>complete transparency, documented at every step.</strong></p>
+            
+            <p>Today, RJS Homes is a bridge between two generations. We carry forward two decades of on-ground expertise, trusted supplier relationships, and a reputation for quality - while layering on modern digital tools that give you real-time visibility into every rupee, every milestone, and every decision. From floor plan to final handover, you'll always know exactly where your home stands.</p>
+            
+            <p class="rjs-bold">This isn't just real estate. It's your family's future - and we take that seriously.</p>
+          </div>
+
+          <div class="rjs-tags">
+            <span class="rjs-tag">TRANSPARENCY</span>
+            <span class="rjs-tag">QUALITY</span>
+            <span class="rjs-tag">LEGACY</span>
+            <span class="rjs-tag">INNOVATION</span>
+          </div>
+
+          <div class="hero-buttons">
+            <button class="btn btn-gold rjs-btn" onclick="scrollToSection('projects-section')">EXPLORE PROJECTS</button>
+            <button class="btn btn-outline rjs-btn" onclick="scrollToSection('contact-section')">GET IN TOUCH</button>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Projects Section -->
-    <section class="projects-section" id="projects-section">
-      <div class="section-header" style="padding: 0 60px;">
-        <div class="section-eyebrow animate-on-scroll">Our Portfolio</div>
-        <h2 class="section-title animate-on-scroll">Completed <span class="gold">Masterworks</span></h2>
-        <p class="section-subtitle animate-on-scroll">Every project tells a story of craftsmanship, dedication, and architectural brilliance.</p>
-      </div>
-      <div class="projects-scroll-container" id="projects-scroll">
-        <div class="projects-track">
-
-          <div class="project-card animate-on-scroll stagger-1">
-            <div class="project-card-image">
-              <div class="img-placeholder">🏛️</div>
-              <div class="project-card-overlay">
-                <span class="project-card-tag">Villa</span>
-              </div>
-            </div>
-            <div class="project-card-body">
-              <div class="project-card-title">Villa Maharaja</div>
-              <div class="project-card-location">📍 Jaipur, Rajasthan</div>
-            </div>
-          </div>
-
-          <div class="project-card animate-on-scroll stagger-2">
-            <div class="project-card-image">
-              <div class="img-placeholder">🏠</div>
-              <div class="project-card-overlay">
-                <span class="project-card-tag">Luxury Home</span>
-              </div>
-            </div>
-            <div class="project-card-body">
-              <div class="project-card-title">The Golden Residence</div>
-              <div class="project-card-location">📍 Mumbai, Maharashtra</div>
-            </div>
-          </div>
-
-          <div class="project-card animate-on-scroll stagger-3">
-            <div class="project-card-image">
-              <div class="img-placeholder">🏗️</div>
-              <div class="project-card-overlay">
-                <span class="project-card-tag">Commercial</span>
-              </div>
-            </div>
-            <div class="project-card-body">
-              <div class="project-card-title">Forge Tower</div>
-              <div class="project-card-location">📍 Bangalore, Karnataka</div>
-            </div>
-          </div>
-
-          <div class="project-card animate-on-scroll stagger-4">
-            <div class="project-card-image">
-              <div class="img-placeholder">🏡</div>
-              <div class="project-card-overlay">
-                <span class="project-card-tag">Renovation</span>
-              </div>
-            </div>
-            <div class="project-card-body">
-              <div class="project-card-title">Heritage Haveli Restore</div>
-              <div class="project-card-location">📍 Udaipur, Rajasthan</div>
-            </div>
-          </div>
-
-          <div class="project-card animate-on-scroll stagger-5">
-            <div class="project-card-image">
-              <div class="img-placeholder">🏢</div>
-              <div class="project-card-overlay">
-                <span class="project-card-tag">Mixed Use</span>
-              </div>
-            </div>
-            <div class="project-card-body">
-              <div class="project-card-title">Crown Heights Complex</div>
-              <div class="project-card-location">📍 Delhi NCR</div>
-            </div>
-          </div>
-
-          <div class="project-card animate-on-scroll stagger-6">
-            <div class="project-card-image">
-              <div class="img-placeholder">🏰</div>
-              <div class="project-card-overlay">
-                <span class="project-card-tag">Villa</span>
-              </div>
-            </div>
-            <div class="project-card-body">
-              <div class="project-card-title">Sharma Family Estate</div>
-              <div class="project-card-location">📍 Goa</div>
-            </div>
-          </div>
-
+    <section class="projects-section rjs-projects" id="projects-section">
+      <div class="projects-header animate-on-scroll">
+        <div>
+          <div class="section-eyebrow">OUR PORTFOLIO</div>
+          <h2 class="section-title rjs-title">Featured Projects</h2>
         </div>
+        <a href="#" class="view-all-link">View All &rarr;</a>
+      </div>
+      
+      <div class="projects-tabs animate-on-scroll">
+        <button class="tab-btn active">ALL</button>
+        <button class="tab-btn">VILLAS</button>
+        <button class="tab-btn">APARTMENTS</button>
+        <button class="tab-btn">DUPLEXES</button>
+        <button class="tab-btn">COMMERCIAL</button>
+      </div>
+
+      <div class="rjs-projects-grid">
+        <!-- Card 1 -->
+        <div class="rjs-card border-yellow animate-on-scroll stagger-1">
+          <div class="rjs-card-img">
+            <span>VILLA ARECA - JUBILEE HILLS</span>
+          </div>
+          <div class="rjs-card-content">
+            <h3>Villa Areca</h3>
+            <p class="rjs-card-meta">Jubilee Hills, Hyderabad · Villa · 24 Units</p>
+            <p class="rjs-card-price">₹85L - ₹1.2 Cr</p>
+            <div class="rjs-card-footer">
+              <span class="rjs-status status-active">ACTIVE</span>
+              <a href="#" class="rjs-details-link">Details &rarr;</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Card 2 -->
+        <div class="rjs-card border-blue animate-on-scroll stagger-2">
+          <div class="rjs-card-img">
+            <span>SKYLINE BLOCK A - GACHIBOWLI</span>
+          </div>
+          <div class="rjs-card-content">
+            <h3>Skyline Block A</h3>
+            <p class="rjs-card-meta">Gachibowli, Hyderabad · Apartment · 120 Units</p>
+            <p class="rjs-card-price">₹45L - ₹75L</p>
+            <div class="rjs-card-footer">
+              <span class="rjs-status status-active">ACTIVE</span>
+              <a href="#" class="rjs-details-link">Details &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="rjs-card border-orange animate-on-scroll stagger-3">
+          <div class="rjs-card-img">
+            <span>DUPLEX ROW PHASE 1 - KOMPALLY</span>
+          </div>
+          <div class="rjs-card-content">
+            <h3>Duplex Row Ph.1</h3>
+            <p class="rjs-card-meta">Kompally, Hyderabad · Duplex · 36 Units</p>
+            <p class="rjs-card-price">₹65L - ₹90L</p>
+            <div class="rjs-card-footer">
+              <span class="rjs-status status-ongoing">ONGOING</span>
+              <a href="#" class="rjs-details-link">Details &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="rjs-card border-green animate-on-scroll stagger-4">
+          <div class="rjs-card-img">
+            <span>GREEN MEADOWS - SHAMIRPET</span>
+          </div>
+          <div class="rjs-card-content">
+            <h3>Green Meadows</h3>
+            <p class="rjs-card-meta">Shamirpet, Hyderabad · Villa · 48 Units</p>
+            <p class="rjs-card-price">₹1.1 Cr - ₹1.8 Cr</p>
+            <div class="rjs-card-footer">
+              <span class="rjs-status status-new">NEW LAUNCH</span>
+              <a href="#" class="rjs-details-link">Details &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="rjs-card border-red animate-on-scroll stagger-5">
+          <div class="rjs-card-img">
+            <span>COMMERCIAL HUB - HITEC CITY</span>
+          </div>
+          <div class="rjs-card-content">
+            <h3>Commercial Hub</h3>
+            <p class="rjs-card-meta">HITEC City, Hyderabad · Commercial · 18 Units</p>
+            <p class="rjs-card-price">₹1.5 Cr - ₹3 Cr</p>
+            <div class="rjs-card-footer">
+              <span class="rjs-status status-completed">COMPLETED</span>
+              <a href="#" class="rjs-details-link">Details &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="rjs-card border-blue animate-on-scroll stagger-6">
+          <div class="rjs-card-img">
+            <span>EMERALD HEIGHTS - MIYAPUR</span>
+          </div>
+          <div class="rjs-card-content">
+            <h3>Emerald Heights</h3>
+            <p class="rjs-card-meta">Miyapur, Hyderabad · Apartment · 96 Units</p>
+            <p class="rjs-card-price">₹38L - ₹62L</p>
+            <div class="rjs-card-footer">
+              <span class="rjs-status status-new">NEW LAUNCH</span>
+              <a href="#" class="rjs-details-link">Details &rarr;</a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services-section" id="services-section">
-      <div class="section-header">
-        <div class="section-eyebrow animate-on-scroll">What We Do</div>
-        <h2 class="section-title animate-on-scroll">Built With <span class="gold">Precision</span></h2>
-        <p class="section-subtitle animate-on-scroll">End-to-end construction solutions, each delivered with uncompromising quality and transparency.</p>
+    <!-- Contact Section -->
+    <section class="contact-section rjs-contact" id="contact-section">
+      <div class="contact-header animate-on-scroll">
+        <div class="section-eyebrow">GET IN TOUCH</div>
+        <h2 class="section-title rjs-title">Let's Build Your Dream<br>Together</h2>
+        <p class="contact-subtitle">We respond within 24 hours. No middlemen, no call centres - just real people who care about your home.</p>
       </div>
-      <div class="services-grid">
-        <div class="service-card animate-on-scroll stagger-1">
-          <div class="service-icon">🏛️</div>
-          <div class="service-title">Villa Construction</div>
-          <p class="service-desc">Bespoke luxury villas built from the ground up with premium materials and master craftsmanship.</p>
+      
+      <div class="contact-grid">
+        <div class="rjs-form-box animate-on-scroll">
+          <h3>Send Us a Message</h3>
+          <form class="rjs-form">
+            <div class="rjs-form-group">
+              <label>FULL NAME</label>
+              <input type="text" placeholder="Your full name">
+            </div>
+            <!-- Additional fields can go here -->
+          </form>
         </div>
-        <div class="service-card animate-on-scroll stagger-2">
-          <div class="service-icon">🎨</div>
-          <div class="service-title">Interior Design</div>
-          <p class="service-desc">Curated interior spaces that blend aesthetics with functionality — every room a masterpiece.</p>
-        </div>
-        <div class="service-card animate-on-scroll stagger-3">
-          <div class="service-icon">📐</div>
-          <div class="service-title">Structural Engineering</div>
-          <p class="service-desc">Rock-solid foundations and structures engineered for generations, using cutting-edge analysis.</p>
-        </div>
-        <div class="service-card animate-on-scroll stagger-4">
-          <div class="service-icon">🔨</div>
-          <div class="service-title">Renovation</div>
-          <p class="service-desc">Transforming existing spaces into modern marvels while preserving character and heritage.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section style="padding: 100px 60px; text-align: center;">
-      <div class="section-header">
-        <div class="section-eyebrow animate-on-scroll">Start Your Journey</div>
-        <h2 class="section-title animate-on-scroll">Ready To Build Your <span class="gold">Legacy?</span></h2>
-        <p class="section-subtitle animate-on-scroll">Join the families who chose FORGE BUILDERS to turn their dream into reality.</p>
-      </div>
-      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;" class="animate-on-scroll">
-        <button class="btn btn-gold" onclick="navigateTo('login')">
-          <span>🚀</span> Track Your Project
-        </button>
-        <button class="btn btn-outline">
-          <span>📞</span> Schedule Consultation
-        </button>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="nav-logo" style="margin-bottom: 4px;">
-            <div class="nav-logo-icon">F</div>
-            <span class="nav-logo-text">FORGE BUILDERS</span>
+        <div class="contact-info-container animate-on-scroll stagger-2">
+          <div class="contact-info-card">
+            <div class="info-icon">📍</div>
+            <div class="info-details">
+              <h4>OFFICE ADDRESS</h4>
+              <p>Plot 42, Road 12, Jubilee Hills<br>Hyderabad, Telangana 500033</p>
+            </div>
           </div>
-          <p>Luxury construction company specializing in bespoke villas, premium renovations, and architectural excellence. Building legacies since 2008.</p>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Services</div>
-          <ul>
-            <li><a href="#">Villa Construction</a></li>
-            <li><a href="#">Interior Design</a></li>
-            <li><a href="#">Structural Engineering</a></li>
-            <li><a href="#">Renovation</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Company</div>
-          <ul>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Our Team</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Press</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Contact</div>
-          <ul>
-            <li><a href="#">info@forgebuilders.com</a></li>
-            <li><a href="#">+91 98765 43210</a></li>
-            <li><a href="#">Mumbai, India</a></li>
-          </ul>
         </div>
       </div>
-      <div class="footer-bottom">
-        &copy; 2024 FORGE BUILDERS Pvt. Ltd. All rights reserved. Crafted with precision.
-      </div>
-    </footer>
+    </section>
 
   </div>
 
@@ -287,8 +310,8 @@
   <div class="page" id="page-login">
     <nav class="main-nav scrolled">
       <div class="nav-logo" onclick="navigateTo('home')">
-        <div class="nav-logo-icon">F</div>
-        <span class="nav-logo-text">FORGE BUILDERS</span>
+        <div class="nav-logo-icon">RJS</div>
+        <span class="nav-logo-text">RJS HOMES</span>
       </div>
       <ul class="nav-links" id="nav-links-login">
         <li><a href="#" onclick="navigateTo('home');">← Back to Home</a></li>
@@ -299,7 +322,7 @@
       <div class="login-bg"></div>
       <div class="login-card">
         <div class="login-logo">
-          <div class="login-logo-icon">F</div>
+          <div class="login-logo-icon">RJS</div>
           <div class="login-title">CLIENT PORTAL</div>
           <div class="login-subtitle">Access your project dashboard</div>
         </div>
@@ -331,7 +354,7 @@
 
     <header class="dash-header">
       <div class="dash-header-left">
-        <div class="dash-header-logo" onclick="navigateTo('home')">FORGE BUILDERS</div>
+        <div class="dash-header-logo" onclick="navigateTo('home')">RJS HOMES</div>
         <div class="live-badge">
           <span class="live-dot"></span>
           Live Updates
@@ -445,7 +468,7 @@
 
       <!-- Dashboard Footer -->
       <div style="text-align: center; padding: 40px 0 20px; border-top: 1px solid var(--glass-border); margin-top: 20px;">
-        <p style="font-size: 13px; color: var(--text-muted);">FORGE BUILDERS Client Portal v2.0 — All data updated in real-time</p>
+        <p style="font-size: 13px; color: var(--text-muted);">RJS HOMES Client Portal v2.0 — All data updated in real-time</p>
       </div>
 
     </div>
@@ -465,7 +488,7 @@
     <!-- Sidebar -->
     <aside class="admin-sidebar" id="admin-sidebar">
       <div class="admin-sidebar-logo">
-        <h2>FORGE BUILDERS</h2>
+        <h2>RJS HOMES</h2>
         <p>Builder Admin Panel</p>
       </div>
       <ul class="admin-nav">
