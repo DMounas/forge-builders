@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RJS Homes Furniture — Premium dark-luxury furniture store. Delivered to your door.">
+  <title>RJS Furniture — Furnish Your Dream Home</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛋️</text></svg>">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/shop.css">
+</head>
+
+<body>
+
+  <!-- Toast -->
+  <div class="s-toast" id="s-toast">
+    <span class="s-toast-icon">✅</span>
+    <span class="s-toast-text">Item added to cart</span>
+  </div>
+
+  <!-- Cart Sidebar Overlay -->
+  <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-sidebar-header">
+      <h2>Your Cart</h2>
+      <button class="cart-close-btn" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-sidebar-items" id="cart-sidebar-items"><!-- dynamic --></div>
+    <div class="cart-sidebar-footer" id="cart-sidebar-footer"><!-- dynamic --></div>
+  </div>
+
+  <!-- Product Detail Modal -->
+  <div class="product-modal-overlay" id="product-modal-overlay" onclick="closeProductModal()"></div>
+  <div class="product-modal" id="product-modal"><!-- dynamic --></div>
+
+  <!-- Add Product Panel -->
+  <div class="add-product-overlay" id="add-product-overlay" onclick="closeAddProductPanel()"></div>
+  <div class="add-product-panel" id="add-product-panel">
+    <div class="panel-header">
+      <h2 id="panel-title">Add New Product</h2>
+      <button onclick="closeAddProductPanel()">✕</button>
+    </div>
+    <form id="add-product-form" onsubmit="saveProduct(event)">
+      <div class="panel-body">
+        <div class="panel-grid">
+          <div class="panel-field full">
+            <label>Product Name *</label>
+            <input type="text" id="p-name" placeholder="e.g. Royal Teak Sofa" required>
+          </div>
+          <div class="panel-field">
+            <label>Price (₹) *</label>
+            <input type="number" id="p-price" placeholder="e.g. 45000" required>
+          </div>
+          <div class="panel-field">
+            <label>Stock Quantity *</label>
+            <input type="number" id="p-stock" placeholder="e.g. 10" required>
+          </div>
+          <div class="panel-field">
+            <label>Category *</label>
+            <select id="p-category">
+              <option value="Living Room">Living Room</option>
+              <option value="Bedroom">Bedroom</option>
+              <option value="Dining">Dining</option>
+              <option value="Office">Office</option>
+              <option value="Outdoor">Outdoor</option>
+              <option value="Décor">Décor</option>
+            </select>
+          </div>
+          <div class="panel-field">
+            <label>Material</label>
+            <select id="p-material">
+              <option value="Wood">Wood</option>
+              <option value="Metal">Metal</option>
+              <option value="Fabric">Fabric</option>
+              <option value="Leather">Leather</option>
+              <option value="Glass">Glass</option>
+            </select>
+          </div>
+          <div class="panel-field">
+            <label>Delivery Days</label>
+            <input type="number" id="p-delivery" placeholder="e.g. 7" value="7">
+          </div>
+          <div class="panel-field">
+            <label>Delivery Partner</label>
+            <input type="text" id="p-partner" placeholder="In-House Delivery Team">
+          </div>
+          <div class="panel-field full">
+            <label>Description</label>
+            <textarea id="p-desc" rows="3" placeholder="Short product description..."></textarea>
+          </div>
+          <div class="panel-field full">
+            <label>Dimensions</label>
+            <input type="text" id="p-dims" placeholder="e.g. 200cm × 85cm × 75cm">
+          </div>
+          <div class="panel-field full">
+            <label>Status</label>
+            <div class="toggle-row">
+              <label class="toggle-switch">
+                <input type="checkbox" id="p-active" checked>
+                <span class="toggle-slider"></span>
+              </label>
+              <span id="p-active-label">Active (visible in shop)</span>
+            </div>
+          </div>
+        </div>
+        <div class="photo-upload-area" id="photo-upload-area">
+          <div class="upload-icon">📷</div>
+          <p>Drag & drop product photos or click to upload</p>
+          <small>Up to 6 photos · JPG, PNG, WebP</small>
+          <input type="file" id="p-photos" accept="image/*" multiple style="display:none"
+            onchange="previewPhotos(this)">
+        </div>
+        <div class="photo-previews" id="photo-previews"></div>
+      </div>
+      <div class="panel-footer">
+        <button type="button" class="btn-outline-shop" onclick="closeAddProductPanel()">Cancel</button>
+        <button type="submit" class="btn-gold-shop">Save Product</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- ============================================
+       SHOP NAVBAR (matches index.html nav)
+       ============================================ -->
+  <nav class="shop-nav" id="shop-nav">
+    <a class="shop-nav-logo" href="index.html">
+      <div class="shop-nav-logo-icon">RJS</div>
+      <span>RJS HOMES</span>
+    </a>
+    <ul class="shop-nav-links" id="shop-nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="#" class="active" onclick="navigateShop('shop-home')">SHOP</a></li>
+      <li><a href="index.html#about-section">ABOUT</a></li>
+      <li><a href="index.html#contact-section">CONTACT</a></li>
+    </ul>
+    <div class="shop-nav-right">
+      <div class="nav-icon-btn" onclick="navigateShop('shop-wishlist')" title="Wishlist">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </div>
+      <div class="nav-icon-btn" onclick="openProfile()" title="My Profile">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="cart-btn nav-icon-btn" id="cart-nav-btn" onclick="openCart()" title="Cart">
+        <svg class="cart-icon-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-badge" id="cart-badge">0</span>
+      </div>
+      <a href="index.html" class="nav-portal-link">PORTAL &rarr;</a>
+      <button class="shop-hamburger" id="shop-hamburger" onclick="toggleShopMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       PAGE: SHOP HOMEPAGE
+       ============================================ -->
+  <div class="shop-page active" id="page-shop-home">
+
+    <!-- Hero Banner -->
+    <section class="shop-hero">
+      <div class="shop-hero-bg"></div>
+      <div class="shop-hero-content">
+        <div class="shop-hero-eyebrow">RJS FURNITURE STORE</div>
+        <h1 class="shop-hero-title">Furnish Your<br><span class="gold-text">Dream Home.</span><br>Delivered To Your
+          Door.</h1>
+        <p class="shop-hero-sub">Curated premium furniture crafted with generations of craftsmanship. Every piece tells
+          a story.</p>
+        <div class="shop-hero-btns">
+          <button class="btn-gold-shop" onclick="scrollToShopSection('shop-products')">EXPLORE COLLECTION</button>
+          <button class="btn-outline-shop" onclick="navigateShop('shop-orders')">TRACK ORDER</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Categories Row -->
+    <section class="category-row" id="shop-categories">
+      <div class="category-pills" id="category-pills">
+        <button class="cat-pill active" data-cat="All" onclick="filterByCategory('All',this)">All</button>
+        <button class="cat-pill" data-cat="Living Room" onclick="filterByCategory('Living Room',this)">Living Room</button>
+        <button class="cat-pill" data-cat="Bedroom" onclick="filterByCategory('Bedroom',this)">Bedroom</button>
+        <button class="cat-pill" data-cat="Dining" onclick="filterByCategory('Dining',this)">Dining</button>
+        <button class="cat-pill" data-cat="Office" onclick="filterByCategory('Office',this)">Office</button>
+        <button class="cat-pill" data-cat="Outdoor" onclick="filterByCategory('Outdoor',this)">Outdoor</button>
+        <button class="cat-pill" data-cat="Décor" onclick="filterByCategory('Décor',this)">Décor</button>
+      </div>
+    </section>
+
+    <!-- Products + Filters -->
+    <section class="shop-main-grid" id="shop-products">
+
+      <!-- Filter Sidebar -->
+      <aside class="filter-sidebar">
+        <div class="filter-header">
+          <h3>FILTERS</h3>
+          <button onclick="resetFilters()">Reset</button>
+        </div>
+
+        <div class="filter-group">
+          <h4>PRICE RANGE</h4>
+          <div class="price-range-labels">
+            <span id="price-min-label">₹0</span>
+            <span id="price-max-label">₹5,00,000</span>
+          </div>
+          <input type="range" id="price-min" min="0" max="500000" step="5000" value="0" oninput="applyFilters()">
+          <input type="range" id="price-max" min="0" max="500000" step="5000" value="500000" oninput="applyFilters()">
+        </div>
+
+        <div class="filter-group">
+          <h4>MATERIAL</h4>
+          <label class="filter-check"><input type="checkbox" value="Wood" onchange="applyFilters()"> Wood</label>
+          <label class="filter-check"><input type="checkbox" value="Metal" onchange="applyFilters()"> Metal</label>
+          <label class="filter-check"><input type="checkbox" value="Fabric" onchange="applyFilters()"> Fabric</label>
+          <label class="filter-check"><input type="checkbox" value="Leather" onchange="applyFilters()"> Leather</label>
+          <label class="filter-check"><input type="checkbox" value="Glass" onchange="applyFilters()"> Glass</label>
+        </div>
+
+        <div class="filter-group">
+          <h4>SORT BY</h4>
+          <select id="sort-by" onchange="applyFilters()">
+            <option value="popular">Most Popular</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="newest">Newest First</option>
+          </select>
+        </div>
+      </aside>
+
+      <!-- Products Area -->
+      <div class="products-area">
+        <!-- Search -->
+        <div class="search-bar-wrap">
+          <span class="search-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+          <input type="text" id="shop-search" placeholder="Search furniture..." oninput="applyFilters()">
+        </div>
+        <!-- Grid -->
+        <div class="products-grid" id="products-grid"><!-- dynamic --></div>
+        <!-- Empty State -->
+        <div class="shop-empty" id="shop-empty" style="display:none">
+          <div class="empty-icon">🪑</div>
+          <h3>Your space is waiting to be furnished.</h3>
+          <p>No products match your filters. Try adjusting your search.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============================================
+       PAGE: WISHLIST
+       ============================================ -->
+  <div class="shop-page" id="page-shop-wishlist" style="display:none">
+    <div class="checkout-wrap" style="max-width:1400px">
+      <div class="page-header-bar">
+        <div>
+          <div class="eyebrow-gold">YOUR FAVORITES</div>
+          <h2>My Wishlist</h2>
+        </div>
+      </div>
+      <div class="products-grid" id="wishlist-grid"></div>
+      <div class="shop-empty" id="wishlist-empty" style="display:none; padding:80px 0;">
+        <div class="empty-icon">❤️</div>
+        <h3>Your wishlist is empty.</h3>
+        <p>Explore our premium collection and save your favorites.</p>
+        <button class="btn-gold-shop" style="margin-top:24px; padding:12px 32px;" onclick="navigateShop('shop-home')">Explore Shop</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       PAGE: PROFILE
+       ============================================ -->
+  <div class="shop-page" id="page-shop-profile" style="display:none">
+    <div class="checkout-wrap">
+      <div class="page-header-bar">
+        <div>
+          <div class="eyebrow-gold">MY ACCOUNT</div>
+          <h2>Profile Settings</h2>
+        </div>
+        <button class="btn-outline-shop" onclick="handleShopLogout()" style="border-color:#ff4444; color:#ff4444;">Sign Out</button>
+      </div>
+      
+      <div class="profile-card" style="background:var(--bg-card); border:1px solid var(--glass-border); padding:40px; border-radius:var(--radius-lg);">
+        <form onsubmit="handleProfileUpdate(event)">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px;">
+            <div>
+              <label style="display:block; font-size:10px; letter-spacing:2px; color:var(--text-secondary); margin-bottom:8px;">FULL NAME</label>
+              <input type="text" id="profile-name" required style="width:100%; padding:14px; background:rgba(255,255,255,0.03); border:1px solid var(--glass-border); color:#fff; border-radius:6px;">
+            </div>
+            <div>
+              <label style="display:block; font-size:10px; letter-spacing:2px; color:var(--text-secondary); margin-bottom:8px;">PHONE NUMBER</label>
+              <input type="tel" id="profile-phone" maxlength="10" placeholder="10-digit number" style="width:100%; padding:14px; background:rgba(255,255,255,0.03); border:1px solid var(--glass-border); color:#fff; border-radius:6px;" oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)">
+            </div>
+          </div>
+          <div style="margin-bottom:32px;">
+            <label style="display:block; font-size:10px; letter-spacing:2px; color:var(--text-secondary); margin-bottom:8px;">SAVED ADDRESS</label>
+            <textarea id="profile-address" rows="3" style="width:100%; padding:14px; background:rgba(255,255,255,0.03); border:1px solid var(--glass-border); color:#fff; border-radius:6px; resize:vertical; font-family:inherit;"></textarea>
+          </div>
+          <button type="submit" class="btn-gold-shop" id="profile-save-btn">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       PAGE: ORDER CONFIRMATION / MY ORDERS
+       ============================================ -->
+  <div class="shop-page" id="page-shop-orders">
+    <div class="orders-page-wrap">
+      <!-- Order Confirmation State -->
+      <div id="order-confirm-view" style="display:none">
+        <div class="order-confirm-card">
+          <svg class="confirm-check-svg" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#D4A017" stroke-width="4" class="check-circle" />
+            <polyline points="28,52 44,68 72,34" fill="none" stroke="#D4A017" stroke-width="5" stroke-linecap="round"
+              stroke-linejoin="round" class="check-mark" />
+          </svg>
+          <h2>Order Placed!</h2>
+          <p class="order-confirm-id">Order ID: <strong id="confirm-order-id">#RJS-00001</strong></p>
+          <p class="order-confirm-eta">Estimated Delivery: <span id="confirm-eta">7–10 business days</span></p>
+          <button class="btn-gold-shop" onclick="showMyOrders()">View My Orders</button>
+          <button class="btn-outline-shop" onclick="navigateShop('shop-home')">Continue Shopping</button>
+        </div>
+      </div>
+
+      <!-- My Orders List -->
+      <div id="my-orders-view">
+        <div class="page-header-bar">
+          <div>
+            <div class="eyebrow-gold">MY ACCOUNT</div>
+            <h2>My Orders</h2>
+          </div>
+          <button class="btn-outline-shop" onclick="navigateShop('shop-home')">← Continue Shopping</button>
+        </div>
+        <div id="orders-list"><!-- dynamic --></div>
+        <div class="shop-empty" id="orders-empty" style="display:none">
+          <div class="empty-icon" style="font-size:48px;color:#666">&#x2750;</div>
+          <h3>No orders yet.</h3>
+          <p>Your orders will appear here once you place them.</p>
+          <button class="btn-gold-shop" onclick="navigateShop('shop-home')">Start Shopping</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       PAGE: CHECKOUT
+       ============================================ -->
+  <div class="shop-page" id="page-shop-checkout">
+    <div class="checkout-wrap">
+
+      <!-- Auth Gate (if not logged in) -->
+
+
+      <!-- Checkout Form (if logged in) -->
+      <div id="checkout-form-view" style="display:none">
+        <div class="page-header-bar">
+          <div>
+            <div class="eyebrow-gold">SECURE CHECKOUT</div>
+            <h2>Place Your Order</h2>
+          </div>
+          <button class="btn-outline-shop" onclick="navigateShop('shop-home')">← Back to Shop</button>
+        </div>
+        <div class="checkout-grid">
+          <div class="checkout-left">
+            <div class="checkout-section">
+              <h3>Delivery Address</h3>
+              <div class="form-grid">
+                <div class="form-field full"><label>Full Name</label><input type="text" id="del-name"
+                    placeholder="Recipient name" required></div>
+                <div class="form-field"><label>Phone</label><input type="tel" id="del-phone"
+                    placeholder="10-digit mobile" maxlength="10" pattern="[0-9]{10}" required></div>
+                <div class="form-field full"><label>Address Line 1</label><input type="text" id="del-addr1"
+                    placeholder="House / Flat number, Street" required></div>
+                <div class="form-field full"><label>Address Line 2</label><input type="text" id="del-addr2"
+                    placeholder="Area, Landmark (optional)"></div>
+                <div class="form-field"><label>City</label><input type="text" id="del-city" placeholder="City" required>
+                </div>
+                <div class="form-field"><label>Pincode</label><input type="text" id="del-pin"
+                    placeholder="6-digit pincode" required></div>
+              </div>
+            </div>
+            <div class="checkout-section">
+              <h3>Preferred Delivery Date</h3>
+              <input type="date" id="del-date" class="date-input">
+            </div>
+            <div class="checkout-section">
+              <h3>Payment Method</h3>
+              <div class="payment-options" id="payment-options">
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="cod" checked onchange="updatePaymentSelection()">
+                  <span>Cash on Delivery</span>
+                </label>
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="online" onchange="updatePaymentSelection()">
+                  <span>Pay Online (Razorpay)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="checkout-right">
+            <div class="order-summary-card">
+              <h3>Order Summary</h3>
+              <div id="checkout-items"><!-- dynamic --></div>
+              <div class="summary-divider"></div>
+              <div class="summary-row"><span>Subtotal</span><span id="checkout-subtotal">₹0</span></div>
+              <div class="summary-row"><span>Delivery Fee</span><span id="checkout-delivery-fee">₹499</span></div>
+              <div class="summary-row total"><span>Total</span><span id="checkout-total">₹0</span></div>
+              <button class="btn-gold-shop place-order-btn" id="place-order-btn" onclick="placeOrder()">Place Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- ============================================
+       GLOBAL AUTH MODAL
+       ============================================ -->
+  <div class="auth-modal-overlay" id="global-auth-modal" style="display:none">
+    <div class="auth-modal-card">
+      <button class="modal-close" onclick="closeAuthModal()">✕</button>
+      <div class="auth-logo" style="font-size:28px;font-family:'Playfair Display',serif;color:#d4af37;font-weight:700">RJS</div>
+      <h2>Welcome to RJS HOMES</h2>
+      <p>Sign in to access your wishlist, orders, and premium features.</p>
+      
+      <div class="auth-oauth-buttons">
+        <button class="btn-oauth" onclick="signInWithProvider('google')">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Continue with Google
+        </button>
+        <button class="btn-oauth" onclick="signInWithProvider('apple')">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.05 2.26.7 3.08.7.81 0 2.22-.87 3.75-.72 1.44.11 2.68.68 3.44 1.76-3.03 1.83-2.54 5.92.51 7.15-.65 1.63-1.48 3.22-2.78 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.32 2.37-1.95 4.38-3.74 4.25z"/></svg>
+          Continue with Apple
+        </button>
+      </div>
+
+      <div class="auth-divider"><span>or continue with email</span></div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="modal-tab-login" onclick="switchModalAuthTab('login')">Log In</button>
+        <button class="auth-tab" id="modal-tab-signup" onclick="switchModalAuthTab('signup')">Sign Up</button>
+      </div>
+      <form onsubmit="handleModalAuth(event)">
+        <div id="modal-signup-name-field" style="display:none">
+          <label>Full Name</label>
+          <input type="text" id="modal-auth-name" placeholder="Your full name">
+        </div>
+        <label>Email</label>
+        <input type="email" id="modal-auth-email" placeholder="you@example.com" required>
+        <label>Password</label>
+        <input type="password" id="modal-auth-password" placeholder="Password" required>
+        <button type="submit" class="btn-gold-shop" id="modal-auth-btn" style="width:100%;margin-top:16px">Continue →</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init({
+        publicKey: 'YOUR_EMAILJS_PUBLIC_KEY', // ← Paste from EmailJS Dashboard > Account
+      });
+    })();
+  </script>
+
+  <!-- Razorpay Checkout -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <script type="module" src="js/supabase.js"></script>
+  <script type="module" src="js/shop-core.js"></script>
+</body>
+
+</html>

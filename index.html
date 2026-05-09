@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="RJS HOMES — Premium construction company building luxury villas and lasting legacies. Track your project in real-time.">
+  <meta name="description"
+    content="RJS HOMES — Premium construction company building luxury villas and lasting legacies. Track your project in real-time.">
   <title>RJS HOMES - Building Dreams Since 2002</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/rjs-styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏗️</text></svg>">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏗️</text></svg>">
 </head>
+
 <body>
 
-  <!-- Particle Canvas -->
   <canvas id="particle-canvas"></canvas>
 
-  <!-- Toast Notification -->
   <div class="toast" id="toast">
     <span class="toast-icon">✅</span>
     <span class="toast-text">Notification sent</span>
   </div>
 
-  <!-- ============================================
-       PAGE 1 - HOMEPAGE
-       ============================================ -->
   <div class="page active" id="page-home">
 
-    <!-- Navigation -->
     <nav class="main-nav" id="main-nav">
       <div class="nav-logo" onclick="navigateTo('home')">
         <div class="nav-logo-icon">RJS</div>
@@ -35,31 +36,32 @@
         <li><a href="#" onclick="navigateTo('home'); closeMenu();">HOME</a></li>
         <li><a href="#about-section" onclick="closeMenu();">ABOUT</a></li>
         <li><a href="#projects-section" onclick="closeMenu();">PROJECTS</a></li>
+        <!-- FIX 6: No emoji -->
+        <li><a href="shop.html">SHOP</a></li>
         <li><a href="#contact-section" onclick="closeMenu();">CONTACT</a></li>
         <li><a href="#" class="nav-cta" onclick="navigateTo('login'); closeMenu();">PORTAL &rarr;</a></li>
       </ul>
       <div class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero rjs-hero" id="hero">
       <div class="hero-bg">
         <div class="hero-bg-animation"></div>
       </div>
       <div class="hero-content rjs-hero-content">
         <div class="hero-left">
-          <div class="section-eyebrow animate-on-scroll">HYDERABAD'S PREMIUM REAL ESTATE</div>
-          <h1 class="hero-title rjs-title animate-on-scroll stagger-1">
+          <!-- FIX 1: Removed animate-on-scroll → shows immediately on load -->
+          <div class="section-eyebrow">HYDERABAD'S PREMIUM REAL ESTATE</div>
+          <h1 class="hero-title rjs-title">
             Building Dreams<br><span class="gold">Since 2002</span>
           </h1>
-          <p class="hero-subtitle rjs-subtitle animate-on-scroll stagger-2">
-            From our father's legacy of craftsmanship to a fully transparent, technology-driven real estate experience - RJS Homes is your trusted partner for premium homes in Hyderabad.
+          <p class="hero-subtitle rjs-subtitle">
+            From our father's legacy of craftsmanship to a fully transparent, technology-driven real estate experience -
+            RJS Homes is your trusted partner for premium homes in Hyderabad.
           </p>
-          <div class="hero-buttons animate-on-scroll stagger-3">
+          <div class="hero-buttons">
             <button class="btn btn-gold rjs-btn" onclick="scrollToSection('projects-section')">
               VIEW OUR PROJECTS
             </button>
@@ -68,20 +70,21 @@
             </button>
           </div>
         </div>
-        <div class="hero-right animate-on-scroll stagger-4">
+        <div class="hero-right">
           <div class="vertical-stats">
             <div class="v-stat">
-              <div class="v-stat-num"><span class="counter" data-target="20">0</span>+</div>
+              <!-- FIX 2: hero-counter starts on page load -->
+              <div class="v-stat-num"><span class="hero-counter" data-target="20">0</span>+</div>
               <div class="v-stat-label">YEARS</div>
             </div>
             <div class="v-stat-divider"></div>
             <div class="v-stat">
-              <div class="v-stat-num"><span class="counter" data-target="500">0</span>+</div>
+              <div class="v-stat-num"><span class="hero-counter" data-target="500">0</span>+</div>
               <div class="v-stat-label">FAMILIES</div>
             </div>
             <div class="v-stat-divider"></div>
             <div class="v-stat">
-              <div class="v-stat-num"><span class="counter" data-target="50">0</span>+</div>
+              <div class="v-stat-num"><span class="hero-counter" data-target="50">0</span>+</div>
               <div class="v-stat-label">PROJECTS</div>
             </div>
           </div>
@@ -89,7 +92,6 @@
       </div>
     </section>
 
-    <!-- About Section -->
     <section class="about-section" id="about-section">
       <div class="horizontal-stats animate-on-scroll" id="stats-section">
         <div class="h-stat">
@@ -113,7 +115,9 @@
       <div class="about-content">
         <div class="about-left animate-on-scroll">
           <div class="about-image-container">
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop" alt="Raman Jee Sharma" class="about-img">
+            <!-- FIX 3: Real image, .PNG extension, Unsplash as fallback -->
+            <img src="images/ramanjeesharma.PNG" alt="Raman Jee Sharma" class="about-img"
+              onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop'">
             <div class="about-img-caption">
               <h3>Raman Jee Sharma</h3>
               <p>Founder & Director, RJS Homes</p>
@@ -123,28 +127,31 @@
         <div class="about-right animate-on-scroll stagger-2">
           <div class="section-eyebrow">OUR STORY</div>
           <h2 class="section-title rjs-title">From My Father's Workshop<br>to Your Dream Home</h2>
-          
           <blockquote class="rjs-quote">
-            "I watched my father build something extraordinary - not just buildings, but trust. I wanted to carry that forward, and make it transparent."
+            "I watched my father build something extraordinary - not just buildings, but trust. I wanted to carry that
+            forward, and make it transparent."
           </blockquote>
-          
           <div class="rjs-text">
-            <p>Growing up in Hyderabad, I had a front-row seat to my father's furniture contracting business - a venture he poured his life into since <strong>2002</strong>. He worked tirelessly across the city, delivering quality craftsmanship job after job. But I noticed something that quietly troubled me: clients rarely had full visibility into what was happening with their investment. Timelines shifted, costs weren't always explained, and trust was fragile.</p>
-            
-            <p>That gap - between what was promised and what clients could verify - became the mission I built RJS Homes around. When I stepped into the business, I brought a new philosophy: <strong>complete transparency, documented at every step.</strong></p>
-            
-            <p>Today, RJS Homes is a bridge between two generations. We carry forward two decades of on-ground expertise, trusted supplier relationships, and a reputation for quality - while layering on modern digital tools that give you real-time visibility into every rupee, every milestone, and every decision. From floor plan to final handover, you'll always know exactly where your home stands.</p>
-            
+            <p>Growing up in Hyderabad, I had a front-row seat to my father's furniture contracting business - a venture
+              he poured his life into since <strong>2002</strong>. He worked tirelessly across the city, delivering
+              quality craftsmanship job after job. But I noticed something that quietly troubled me: clients rarely had
+              full visibility into what was happening with their investment. Timelines shifted, costs weren't always
+              explained, and trust was fragile.</p>
+            <p>That gap - between what was promised and what clients could verify - became the mission I built RJS Homes
+              around. When I stepped into the business, I brought a new philosophy: <strong>complete transparency,
+                documented at every step.</strong></p>
+            <p>Today, RJS Homes is a bridge between two generations. We carry forward two decades of on-ground
+              expertise, trusted supplier relationships, and a reputation for quality - while layering on modern digital
+              tools that give you real-time visibility into every rupee, every milestone, and every decision. From floor
+              plan to final handover, you'll always know exactly where your home stands.</p>
             <p class="rjs-bold">This isn't just real estate. It's your family's future - and we take that seriously.</p>
           </div>
-
           <div class="rjs-tags">
             <span class="rjs-tag">TRANSPARENCY</span>
             <span class="rjs-tag">QUALITY</span>
             <span class="rjs-tag">LEGACY</span>
             <span class="rjs-tag">INNOVATION</span>
           </div>
-
           <div class="hero-buttons">
             <button class="btn btn-gold rjs-btn" onclick="scrollToSection('projects-section')">EXPLORE PROJECTS</button>
             <button class="btn btn-outline rjs-btn" onclick="scrollToSection('contact-section')">GET IN TOUCH</button>
@@ -153,143 +160,106 @@
       </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- FIX 4: Portfolio tabs + Details modal + View All -->
     <section class="projects-section rjs-projects" id="projects-section">
       <div class="projects-header animate-on-scroll">
         <div>
           <div class="section-eyebrow">OUR PORTFOLIO</div>
           <h2 class="section-title rjs-title">Featured Projects</h2>
         </div>
-        <a href="#" class="view-all-link">View All &rarr;</a>
+        <a href="#projects-section" class="view-all-link" onclick="filterProjects('ALL'); return false;">View All
+          &rarr;</a>
       </div>
-      
+
       <div class="projects-tabs animate-on-scroll">
-        <button class="tab-btn active">ALL</button>
-        <button class="tab-btn">VILLAS</button>
-        <button class="tab-btn">APARTMENTS</button>
-        <button class="tab-btn">DUPLEXES</button>
-        <button class="tab-btn">COMMERCIAL</button>
+        <button class="tab-btn active" onclick="filterProjects('ALL',this)">ALL</button>
+        <button class="tab-btn" onclick="filterProjects('VILLA',this)">VILLAS</button>
+        <button class="tab-btn" onclick="filterProjects('APARTMENT',this)">APARTMENTS</button>
+        <button class="tab-btn" onclick="filterProjects('DUPLEX',this)">DUPLEXES</button>
+        <button class="tab-btn" onclick="filterProjects('COMMERCIAL',this)">COMMERCIAL</button>
       </div>
 
-      <div class="rjs-projects-grid">
-        <!-- Card 1 -->
-        <div class="rjs-card border-yellow animate-on-scroll stagger-1">
-          <div class="rjs-card-img">
-            <span>VILLA ARECA - JUBILEE HILLS</span>
-          </div>
-          <div class="rjs-card-content">
-            <h3>Villa Areca</h3>
-            <p class="rjs-card-meta">Jubilee Hills, Hyderabad · Villa · 24 Units</p>
-            <p class="rjs-card-price">₹85L - ₹1.2 Cr</p>
-            <div class="rjs-card-footer">
-              <span class="rjs-status status-active">ACTIVE</span>
-              <a href="#" class="rjs-details-link">Details &rarr;</a>
-            </div>
-          </div>
+      <div class="rjs-projects-grid" id="projects-grid">
+        <div style="color:var(--text-secondary); grid-column:1/-1; text-align:center; padding:40px;">
+          <div class="spinner" style="margin:0 auto 16px;"></div>
+          Loading Projects...
         </div>
-        
-        <!-- Card 2 -->
-        <div class="rjs-card border-blue animate-on-scroll stagger-2">
-          <div class="rjs-card-img">
-            <span>SKYLINE BLOCK A - GACHIBOWLI</span>
-          </div>
-          <div class="rjs-card-content">
-            <h3>Skyline Block A</h3>
-            <p class="rjs-card-meta">Gachibowli, Hyderabad · Apartment · 120 Units</p>
-            <p class="rjs-card-price">₹45L - ₹75L</p>
-            <div class="rjs-card-footer">
-              <span class="rjs-status status-active">ACTIVE</span>
-              <a href="#" class="rjs-details-link">Details &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="rjs-card border-orange animate-on-scroll stagger-3">
-          <div class="rjs-card-img">
-            <span>DUPLEX ROW PHASE 1 - KOMPALLY</span>
-          </div>
-          <div class="rjs-card-content">
-            <h3>Duplex Row Ph.1</h3>
-            <p class="rjs-card-meta">Kompally, Hyderabad · Duplex · 36 Units</p>
-            <p class="rjs-card-price">₹65L - ₹90L</p>
-            <div class="rjs-card-footer">
-              <span class="rjs-status status-ongoing">ONGOING</span>
-              <a href="#" class="rjs-details-link">Details &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="rjs-card border-green animate-on-scroll stagger-4">
-          <div class="rjs-card-img">
-            <span>GREEN MEADOWS - SHAMIRPET</span>
-          </div>
-          <div class="rjs-card-content">
-            <h3>Green Meadows</h3>
-            <p class="rjs-card-meta">Shamirpet, Hyderabad · Villa · 48 Units</p>
-            <p class="rjs-card-price">₹1.1 Cr - ₹1.8 Cr</p>
-            <div class="rjs-card-footer">
-              <span class="rjs-status status-new">NEW LAUNCH</span>
-              <a href="#" class="rjs-details-link">Details &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="rjs-card border-red animate-on-scroll stagger-5">
-          <div class="rjs-card-img">
-            <span>COMMERCIAL HUB - HITEC CITY</span>
-          </div>
-          <div class="rjs-card-content">
-            <h3>Commercial Hub</h3>
-            <p class="rjs-card-meta">HITEC City, Hyderabad · Commercial · 18 Units</p>
-            <p class="rjs-card-price">₹1.5 Cr - ₹3 Cr</p>
-            <div class="rjs-card-footer">
-              <span class="rjs-status status-completed">COMPLETED</span>
-              <a href="#" class="rjs-details-link">Details &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="rjs-card border-blue animate-on-scroll stagger-6">
-          <div class="rjs-card-img">
-            <span>EMERALD HEIGHTS - MIYAPUR</span>
-          </div>
-          <div class="rjs-card-content">
-            <h3>Emerald Heights</h3>
-            <p class="rjs-card-meta">Miyapur, Hyderabad · Apartment · 96 Units</p>
-            <p class="rjs-card-price">₹38L - ₹62L</p>
-            <div class="rjs-card-footer">
-              <span class="rjs-status status-new">NEW LAUNCH</span>
-              <a href="#" class="rjs-details-link">Details &rarr;</a>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Project Modal -->
+    <div id="project-modal-overlay"
+      style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:1000;backdrop-filter:blur(4px)"
+      onclick="closeProjectModal()"></div>
+    <div id="project-detail-modal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+                background:#141414;border:1px solid #2a2a2a;border-top:3px solid #d4af37;
+                padding:40px;width:90%;max-width:560px;z-index:1001">
+      <button onclick="closeProjectModal()"
+        style="position:absolute;top:16px;right:16px;background:none;border:none;color:#888;font-size:20px;cursor:pointer">✕</button>
+      <div id="project-modal-content"></div>
+    </div>
+
+    <!-- FIX 5: Complete contact form -->
     <section class="contact-section rjs-contact" id="contact-section">
       <div class="contact-header animate-on-scroll">
         <div class="section-eyebrow">GET IN TOUCH</div>
         <h2 class="section-title rjs-title">Let's Build Your Dream<br>Together</h2>
-        <p class="contact-subtitle">We respond within 24 hours. No middlemen, no call centres - just real people who care about your home.</p>
+        <p class="contact-subtitle">We respond within 24 hours. No middlemen, no call centres - just real people who
+          care about your home.</p>
       </div>
-      
+
       <div class="contact-grid">
         <div class="rjs-form-box animate-on-scroll">
           <h3>Send Us a Message</h3>
-          <form class="rjs-form">
+          <form class="rjs-form" id="contact-form" onsubmit="handleContactSubmit(event)">
             <div class="rjs-form-group">
-              <label>FULL NAME</label>
-              <input type="text" placeholder="Your full name">
+              <label>FULL NAME *</label>
+              <input type="text" id="contact-name" placeholder="Your full name" required>
             </div>
-            <!-- Additional fields can go here -->
+            <div class="rjs-form-group">
+              <label>EMAIL ADDRESS *</label>
+              <input type="email" id="contact-email" placeholder="your@email.com" required>
+            </div>
+            <div class="rjs-form-group">
+              <label>PHONE NUMBER</label>
+              <input type="tel" id="contact-phone" placeholder="+91 98765 43210">
+            </div>
+            <div class="rjs-form-group">
+              <label>INTERESTED IN</label>
+              <select id="contact-interest" style="width:100%;background:#1a1a1a;border:1px solid rgba(255,255,255,0.05);
+                       padding:15px;color:#fff;font-size:14px;box-sizing:border-box">
+                <option value="">Select a property type</option>
+                <option>Villa</option>
+                <option>Apartment</option>
+                <option>Duplex</option>
+                <option>Commercial Space</option>
+                <option>Renovation / Custom Build</option>
+              </select>
+            </div>
+            <div class="rjs-form-group">
+              <label>BUDGET RANGE</label>
+              <select id="contact-budget" style="width:100%;background:#1a1a1a;border:1px solid rgba(255,255,255,0.05);
+                       padding:15px;color:#fff;font-size:14px;box-sizing:border-box">
+                <option value="">Select your budget</option>
+                <option>Under ₹50L</option>
+                <option>₹50L – ₹1 Cr</option>
+                <option>₹1 Cr – ₹2 Cr</option>
+                <option>Above ₹2 Cr</option>
+              </select>
+            </div>
+            <div class="rjs-form-group">
+              <label>YOUR MESSAGE</label>
+              <textarea id="contact-message" placeholder="Tell us about your dream home..." style="width:100%;background:#1a1a1a;border:1px solid rgba(255,255,255,0.05);
+                       padding:15px;color:#fff;font-size:14px;resize:vertical;min-height:100px;
+                       font-family:inherit;box-sizing:border-box"></textarea>
+            </div>
+            <button type="submit" id="contact-submit-btn" class="btn btn-gold rjs-btn"
+              style="width:100%;margin-top:8px">
+              SEND MESSAGE &rarr;
+            </button>
           </form>
         </div>
+
         <div class="contact-info-container animate-on-scroll stagger-2">
           <div class="contact-info-card">
             <div class="info-icon">📍</div>
@@ -298,15 +268,34 @@
               <p>Plot 42, Road 12, Jubilee Hills<br>Hyderabad, Telangana 500033</p>
             </div>
           </div>
+          <div class="contact-info-card" style="margin-top:16px">
+            <div class="info-icon">📞</div>
+            <div class="info-details">
+              <h4>PHONE</h4>
+              <p>+91 98765 43210<br>Mon – Sat, 9AM – 6PM</p>
+            </div>
+          </div>
+          <div class="contact-info-card" style="margin-top:16px">
+            <div class="info-icon">✉️</div>
+            <div class="info-details">
+              <h4>EMAIL</h4>
+              <p>rjshomes1@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-info-card" style="margin-top:16px">
+            <div class="info-icon">🕐</div>
+            <div class="info-details">
+              <h4>RESPONSE TIME</h4>
+              <p>We respond within 24 hours.<br>Site visits by appointment only.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
   </div>
 
-  <!-- ============================================
-       PAGE 2 — CLIENT LOGIN
-       ============================================ -->
+  <!-- PAGE 2 — CLIENT LOGIN (unchanged) -->
   <div class="page" id="page-login">
     <nav class="main-nav scrolled">
       <div class="nav-logo" onclick="navigateTo('home')">
@@ -317,7 +306,6 @@
         <li><a href="#" onclick="navigateTo('home');">← Back to Home</a></li>
       </ul>
     </nav>
-
     <div class="login-page">
       <div class="login-bg"></div>
       <div class="login-card">
@@ -329,84 +317,62 @@
         <form class="login-form" id="login-form" onsubmit="handleLogin(event)">
           <div class="form-group">
             <label class="form-label" for="project-id">Project ID</label>
-            <input class="form-input" type="text" id="project-id" placeholder="e.g. FRG-2024" required autocomplete="off">
+            <input class="form-input" type="text" id="project-id" placeholder="e.g. FRG-2024" required
+              autocomplete="off">
           </div>
           <div class="form-group">
             <label class="form-label" for="password">Password</label>
             <input class="form-input" type="password" id="password" placeholder="Enter your password" required>
           </div>
-          <button type="submit" class="btn btn-gold login-btn">
-            ✦ Enter Portal
-          </button>
+          <button type="submit" class="btn btn-gold login-btn">✦ Enter Portal</button>
         </form>
         <p class="login-tagline">"Your dream home is being built.<br>Watch it come to life."</p>
         <div class="login-back">
-          <a href="#" onclick="navigateTo('home')">← Return to Homepage</a>
+          <a href="#" onclick="navigateTo('home')" style="margin-right:24px;">← Return to Homepage</a>
+          <a href="admin.html" style="color:var(--gold);"><span style="font-size:12px;">🛡️</span> Admin Access</a>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ============================================
-       PAGE 3 — CLIENT DASHBOARD
-       ============================================ -->
+  <!-- PAGE 3 — CLIENT DASHBOARD (unchanged) -->
   <div class="page" id="page-dashboard">
-
     <header class="dash-header">
       <div class="dash-header-left">
-        <div class="dash-header-logo" onclick="navigateTo('home')">RJS HOMES</div>
-        <div class="live-badge">
-          <span class="live-dot"></span>
-          Live Updates
-        </div>
+        <div class="dash-header-logo" onclick="navigateTo('home')" style="cursor:pointer" title="Return to Website">RJS HOMES</div>
+        <div class="live-badge"><span class="live-dot"></span>Live Updates</div>
       </div>
       <div class="dash-header-right">
+        <a href="#" onclick="navigateTo('home')" style="color:var(--text-secondary); text-decoration:none; font-size:13px; font-weight:500; margin-right:20px; transition:color 0.2s;">← Return to Website</a>
         <div class="notification-bell" id="notification-bell" onclick="toggleNotifications()">
           🔔
           <span class="notification-count" id="notification-count">3</span>
           <div class="notification-dropdown" id="notification-dropdown">
             <div class="notification-dropdown-header">Recent Notifications</div>
-            <div class="notification-item">
-              <div class="notification-item-text">✅ Plumbing on 2nd floor completed</div>
-              <div class="notification-item-time">2 hours ago</div>
-            </div>
-            <div class="notification-item">
-              <div class="notification-item-text">📸 New site photos uploaded — Framing</div>
-              <div class="notification-item-time">Yesterday</div>
-            </div>
-            <div class="notification-item">
-              <div class="notification-item-text">📋 Materials log updated — Cement delivery</div>
-              <div class="notification-item-time">2 days ago</div>
-            </div>
           </div>
         </div>
-        <div class="dash-user" onclick="handleLogout()">
+        <div class="dash-user" onclick="handleLogout()" title="Log Out">
           <div class="dash-avatar">RS</div>
-          <span class="dash-user-name">Mr. Sharma</span>
+          <span class="dash-user-name">Log Out</span>
         </div>
       </div>
     </header>
-
     <div class="dash-main">
-
-      <!-- Welcome -->
       <div class="dash-welcome animate-on-scroll">
         <h1>Welcome back, <span class="gold">Mr. Sharma</span></h1>
         <p>Villa Project <strong>#FRG-2024</strong> — Tracking your dream, brick by brick.</p>
       </div>
-
-      <!-- Progress Ring -->
       <div class="progress-ring-container animate-on-scroll">
         <div class="progress-ring-wrapper">
           <svg class="progress-ring-svg" viewBox="0 0 200 200">
             <defs>
               <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#A67C00"/>
-                <stop offset="100%" stop-color="#E8C547"/>
+                <stop offset="0%" stop-color="#A67C00" />
+                <stop offset="100%" stop-color="#E8C547" />
               </linearGradient>
             </defs>
-            <circle class="progress-ring-bg" cx="100" cy="100" r="90"/>
-            <circle class="progress-ring-fill" id="progress-ring-fill" cx="100" cy="100" r="90"/>
+            <circle class="progress-ring-bg" cx="100" cy="100" r="90" />
+            <circle class="progress-ring-fill" id="progress-ring-fill" cx="100" cy="100" r="90" />
           </svg>
           <div class="progress-ring-text">
             <div class="progress-ring-value" id="progress-ring-value">0%</div>
@@ -415,41 +381,17 @@
         </div>
         <div class="progress-ring-info">
           <h3>Overall Project Progress</h3>
-          <p>Your villa is progressing excellently. Plumbing and electrical work is underway on all floors. We expect to begin painting by end of May.</p>
-          <div class="estimated">
-            📅 Estimated Completion: August 2025
-          </div>
+          <p>Your villa is progressing excellently.</p>
+          <div class="estimated">📅 Estimated Completion: August 2025</div>
         </div>
       </div>
-
-      <!-- Phase Cards -->
-      <div class="dash-section-title">
-        Phase Breakdown <span class="gold-line"></span>
-      </div>
-      <div class="phases-grid" id="phases-grid">
-        <!-- Dynamically populated -->
-      </div>
-
-      <!-- Recent Updates -->
-      <div class="dash-section-title">
-        Recent Updates <span class="gold-line"></span>
-      </div>
-      <div class="timeline" id="timeline">
-        <!-- Dynamically populated -->
-      </div>
-
-      <!-- Photo Gallery -->
-      <div class="dash-section-title">
-        Site Photo Gallery <span class="gold-line"></span>
-      </div>
-      <div class="gallery-grid" id="gallery-grid">
-        <!-- Dynamically populated -->
-      </div>
-
-      <!-- Materials Table -->
-      <div class="dash-section-title">
-        Materials Transparency Log <span class="gold-line"></span>
-      </div>
+      <div class="dash-section-title">Phase Breakdown <span class="gold-line"></span></div>
+      <div class="phases-grid" id="phases-grid"></div>
+      <div class="dash-section-title">Recent Updates <span class="gold-line"></span></div>
+      <div class="timeline" id="timeline"></div>
+      <div class="dash-section-title">Site Photo Gallery <span class="gold-line"></span></div>
+      <div class="gallery-grid" id="gallery-grid"></div>
+      <div class="dash-section-title">Materials Transparency Log <span class="gold-line"></span></div>
       <div class="materials-table-wrapper">
         <table class="materials-table" id="materials-table">
           <thead>
@@ -460,167 +402,145 @@
               <th>Total Cost</th>
             </tr>
           </thead>
-          <tbody id="materials-tbody">
-            <!-- Dynamically populated -->
-          </tbody>
+          <tbody id="materials-tbody"></tbody>
         </table>
       </div>
-
-      <!-- Dashboard Footer -->
-      <div style="text-align: center; padding: 40px 0 20px; border-top: 1px solid var(--glass-border); margin-top: 20px;">
-        <p style="font-size: 13px; color: var(--text-muted);">RJS HOMES Client Portal v2.0 — All data updated in real-time</p>
+      <div style="text-align:center;padding:40px 0 20px;border-top:1px solid var(--glass-border);margin-top:20px">
+        <p style="font-size:13px;color:var(--text-muted)">RJS HOMES Client Portal v3.0 — All data updated in real-time
+        </p>
       </div>
-
     </div>
   </div>
 
-  <!-- ============================================
-       PAGE 4 — ADMIN PANEL
-       ============================================ -->
-  <div class="page" id="page-admin">
 
-    <!-- Mobile Toggle -->
-    <button class="admin-mobile-toggle" id="admin-mobile-toggle" onclick="toggleAdminSidebar()">☰</button>
 
-    <!-- Admin Overlay -->
-    <div class="admin-overlay" id="admin-overlay" onclick="toggleAdminSidebar()"></div>
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init({
+        publicKey: 'XrmT-3Zz_y5EhBsjQ', // ← Paste from EmailJS Dashboard > Account
+      });
+    })();
+  </script>
 
-    <!-- Sidebar -->
-    <aside class="admin-sidebar" id="admin-sidebar">
-      <div class="admin-sidebar-logo">
-        <h2>RJS HOMES</h2>
-        <p>Builder Admin Panel</p>
-      </div>
-      <ul class="admin-nav">
-        <li><a href="#" class="active" id="admin-nav-projects" onclick="switchAdminTab('projects')"><span class="admin-nav-icon">📋</span> All Projects</a></li>
-        <li><a href="#" id="admin-nav-editor" onclick="switchAdminTab('editor')"><span class="admin-nav-icon">✏️</span> Project Editor</a></li>
-        <li><a href="#" id="admin-nav-photos" onclick="switchAdminTab('photos')"><span class="admin-nav-icon">📸</span> Photo Upload</a></li>
-        <li><a href="#" id="admin-nav-materials" onclick="switchAdminTab('materials')"><span class="admin-nav-icon">📦</span> Materials Log</a></li>
-      </ul>
-      <div style="padding: 16px 24px; margin-top: auto; border-top: 1px solid var(--glass-border);">
-        <a href="#" onclick="navigateTo('home')" style="font-size: 13px; color: var(--text-secondary); display: flex; align-items: center; gap: 8px;">
-          <span>←</span> Back to Website
-        </a>
-      </div>
-    </aside>
+  <script type="module" src="js/supabase.js"></script>
+  <script type="module" src="js/app.js"></script>
 
-    <!-- Main Content -->
-    <div class="admin-content">
+  <script>
+    // FIX 4: Tab filtering
+    function filterProjects(type, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      document.querySelectorAll('#projects-grid .rjs-card').forEach(card => {
+        card.style.display = (type === 'ALL' || card.dataset.type === type) ? 'block' : 'none';
+      });
+    }
 
-      <!-- Top Bar -->
-      <div class="admin-top-bar">
-        <h1>All Projects</h1>
-        <button class="btn btn-outline" onclick="navigateTo('dashboard')">👁️ Preview Client View</button>
-      </div>
-
-      <!-- Projects List -->
-      <div class="project-list" id="admin-projects-list">
-        <div class="project-list-item active-project" onclick="selectProject(0)">
-          <div class="project-list-info">
-            <div class="project-list-icon">🏛️</div>
-            <div>
-              <div class="project-list-name">Sharma Family Villa</div>
-              <div class="project-list-id">FRG-2024</div>
-            </div>
-          </div>
-          <span class="status-chip on-track">On Track</span>
+    // FIX 4: Project detail modal
+    function showProjectDetail(name, location, type, units, price, status) {
+      const colors = { ACTIVE: '#2ecc71', ONGOING: '#e67e22', 'NEW LAUNCH': '#3498db', COMPLETED: '#95a5a6' };
+      const c = colors[status] || '#d4af37';
+      document.getElementById('project-modal-content').innerHTML = `
+        <div style="margin-bottom:24px">
+          <div style="font-size:11px;color:#d4af37;letter-spacing:2px;margin-bottom:8px">${type.toUpperCase()} · ${location}</div>
+          <h2 style="font-family:'Playfair Display',serif;font-size:28px;margin-bottom:12px">${name}</h2>
+          <span style="background:${c}22;color:${c};padding:4px 12px;font-size:11px;font-weight:700;letter-spacing:1px">${status}</span>
         </div>
-        <div class="project-list-item" onclick="selectProject(1)">
-          <div class="project-list-info">
-            <div class="project-list-icon">🏗️</div>
-            <div>
-              <div class="project-list-name">Patel Commercial Complex</div>
-              <div class="project-list-id">FRG-2025</div>
-            </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
+          <div style="background:#1a1a1a;padding:20px">
+            <div style="font-size:10px;color:#888;letter-spacing:1.5px;margin-bottom:6px">TOTAL UNITS</div>
+            <div style="font-size:20px;font-weight:600">${units}</div>
           </div>
-          <span class="status-chip delayed">Delayed</span>
-        </div>
-        <div class="project-list-item" onclick="selectProject(2)">
-          <div class="project-list-info">
-            <div class="project-list-icon">🏠</div>
-            <div>
-              <div class="project-list-name">Mehta Luxury Home</div>
-              <div class="project-list-id">FRG-2023</div>
-            </div>
-          </div>
-          <span class="status-chip completed-chip">Completed</span>
-        </div>
-        <div class="project-list-item" onclick="selectProject(3)">
-          <div class="project-list-info">
-            <div class="project-list-icon">🏡</div>
-            <div>
-              <div class="project-list-name">Kumar Heritage Renovation</div>
-              <div class="project-list-id">FRG-2026</div>
-            </div>
-          </div>
-          <span class="status-chip on-track">On Track</span>
-        </div>
-      </div>
-
-      <!-- Editor Panel -->
-      <div class="editor-panel" id="editor-panel">
-
-        <!-- Phase Sliders -->
-        <div class="editor-section" id="admin-tab-editor">
-          <div class="editor-section-title"><span class="icon">📊</span> Update Phase Completion</div>
-          <div class="phase-slider-group" id="phase-sliders">
-            <!-- Dynamically generated -->
+          <div style="background:#1a1a1a;padding:20px">
+            <div style="font-size:10px;color:#888;letter-spacing:1.5px;margin-bottom:6px">PRICE RANGE</div>
+            <div style="font-size:20px;font-weight:600;color:#d4af37">${price}</div>
           </div>
         </div>
+        <p style="color:#888;font-size:14px;line-height:1.6;margin-bottom:24px">
+          For details, site visits or to register your interest in ${name}, contact our team. We'll respond within 24 hours.
+        </p>
+        <div style="display:flex;gap:12px">
+          <button onclick="closeProjectModal();document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})"
+            style="flex:1;background:#d4af37;color:#000;border:none;padding:14px;font-weight:700;font-size:12px;letter-spacing:1px;cursor:pointer">
+            ENQUIRE NOW
+          </button>
+          <button onclick="closeProjectModal()"
+            style="flex:1;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.2);padding:14px;font-size:12px;cursor:pointer">
+            CLOSE
+          </button>
+        </div>`;
+      document.getElementById('project-modal-overlay').style.display = 'block';
+      document.getElementById('project-detail-modal').style.display = 'block';
+    }
 
-        <!-- Updates -->
-        <div class="editor-section" id="admin-tab-updates">
-          <div class="editor-section-title"><span class="icon">📝</span> Project Updates</div>
-          <div class="update-entries" id="update-entries">
-            <!-- Dynamically generated -->
-          </div>
-          <div class="admin-row">
-            <input class="admin-input" type="date" id="new-update-date" value="2025-04-18">
-            <input class="admin-input" type="text" id="new-update-text" placeholder="Enter update description...">
-            <button class="btn btn-outline" style="white-space: nowrap;" onclick="addUpdate()">+ Add</button>
-          </div>
-        </div>
+    function closeProjectModal() {
+      document.getElementById('project-modal-overlay').style.display = 'none';
+      document.getElementById('project-detail-modal').style.display = 'none';
+    }
 
-        <!-- Photos Upload -->
-        <div class="editor-section" id="admin-tab-photos">
-          <div class="editor-section-title"><span class="icon">📸</span> Upload Site Photos</div>
-          <div style="margin-bottom: 16px;">
-            <label class="form-label">Select Phase</label>
-            <select class="admin-input" id="photo-phase-select" style="padding: 12px 16px; background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); color: var(--text-primary);">
-              <option value="foundation">Foundation</option>
-              <option value="framing">Framing</option>
-              <option value="plumbing" selected>Plumbing</option>
-              <option value="electrical">Electrical</option>
-              <option value="painting">Painting</option>
-              <option value="finishing">Finishing</option>
-            </select>
-          </div>
-          <div class="upload-area" onclick="simulateUpload()">
-            <div class="upload-icon">📁</div>
-            <p class="upload-text">Click to upload photos or <span>browse files</span></p>
-            <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">Supports JPG, PNG up to 10MB</p>
-          </div>
-        </div>
+    // ── EmailJS Config ──
+    // Step 1: Sign up at https://www.emailjs.com (free tier = 200 emails/month)
+    // Step 2: Add Gmail service → connect rjshomes1@gmail.com
+    // Step 3: Create a template with variables: {{from_name}}, {{from_email}}, {{phone}}, {{interest}}, {{budget}}, {{message}}
+    // Step 4: Paste your Service ID, Template ID below
+    const EMAILJS_SERVICE_ID = 'service_67salvx';   // e.g. 'service_abc123'
+    const EMAILJS_TEMPLATE_ID = 'template_dc6t5hk'; // e.g. 'template_xyz789'
 
-        <!-- Materials -->
-        <div class="editor-section" id="admin-tab-materials">
-          <div class="editor-section-title"><span class="icon">📦</span> Materials Log</div>
-          <div class="materials-admin" id="materials-admin">
-            <!-- Dynamically generated -->
-          </div>
-          <button class="btn-add-row" onclick="addMaterialRow()">+ Add Material Row</button>
-        </div>
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('contact-submit-btn');
+      btn.textContent = 'SENDING...';
+      btn.disabled = true;
 
-        <!-- Push Update Button -->
-        <button class="btn btn-gold push-update-btn" onclick="pushLiveUpdate()">
-          ⚡ Push Live Update to Client
-        </button>
+      const templateParams = {
+        from_name: document.getElementById('contact-name').value.trim(),
+        from_email: document.getElementById('contact-email').value.trim(),
+        phone: document.getElementById('contact-phone').value.trim() || 'Not provided',
+        interest: document.getElementById('contact-interest').value || 'Not selected',
+        budget: document.getElementById('contact-budget').value || 'Not selected',
+        message: document.getElementById('contact-message').value.trim() || 'No message',
+        to_email: 'rjshomes1@gmail.com',
+      };
 
-      </div>
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+        .then(() => {
+          btn.textContent = 'MESSAGE SENT ✓';
+          btn.style.background = '#2ecc71';
+          document.getElementById('contact-form').reset();
+          setTimeout(() => {
+            btn.textContent = 'SEND MESSAGE →';
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 4000);
+        })
+        .catch((err) => {
+          console.error('EmailJS error:', err);
+          btn.textContent = 'FAILED — TRY AGAIN';
+          btn.style.background = '#e74c3c';
+          setTimeout(() => {
+            btn.textContent = 'SEND MESSAGE →';
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 3000);
+        });
+    }
 
-    </div>
-  </div>
+    // FIX 2: Hero counters start immediately on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.hero-counter').forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const step = target / (2000 / 16);
+        let current = 0;
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) { current = target; clearInterval(timer); }
+          counter.textContent = Math.floor(current);
+        }, 16);
+      });
+    });
+  </script>
 
-  <script src="js/app.js"></script>
 </body>
+
 </html>
